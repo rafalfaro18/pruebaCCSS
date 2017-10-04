@@ -11,4 +11,8 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", "/project"
   # Provision VM only once
   config.vm.provision :shell, :path => "provision.sh"
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+    v.cpus = 1
+  end
 end
