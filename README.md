@@ -62,6 +62,13 @@ To install the dependencies, run this in the application folder from the command
 $ npm install
 ```
 
+If using vagrant on Windows Host:
+
+```bash
+$ npm install --no-bin-links
+```
+
+
 This command does a few things:
 * First it will install the dependencies needed for the application to run.
 * If you're running in a development environment, it will then also install development dependencies needed for testing and running your application.
