@@ -23,7 +23,7 @@ var app,
 describe('Article Admin CRUD tests', function () {
   before(function (done) {
     // Get application
-    app = express.init(mongoose.connection.db);
+    app = express.init(mongoose);
     agent = request.agent(app);
 
     done();
@@ -49,16 +49,14 @@ describe('Article Admin CRUD tests', function () {
     });
 
     // Save a user to the test db and create new article
-    user.save()
-      .then(function () {
-        article = {
-          title: 'Article Title',
-          content: 'Article Content'
-        };
+    user.save(function () {
+      article = {
+        title: 'Article Title',
+        content: 'Article Content'
+      };
 
-        done();
-      })
-      .catch(done);
+      done();
+    });
   });
 
   it('should be able to save an article if logged in', function (done) {
@@ -277,9 +275,8 @@ describe('Article Admin CRUD tests', function () {
   });
 
   afterEach(function (done) {
-    Article.remove().exec()
-      .then(User.remove().exec())
-      .then(done())
-      .catch(done);
+    User.remove().exec(function () {
+      Article.remove().exec(done);
+    });
   });
 });

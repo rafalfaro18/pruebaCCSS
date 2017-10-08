@@ -62,13 +62,6 @@ To install the dependencies, run this in the application folder from the command
 $ npm install
 ```
 
-If using vagrant on Windows Host:
-
-```bash
-$ npm install --no-bin-links
-```
-
-
 This command does a few things:
 * First it will install the dependencies needed for the application to run.
 * If you're running in a development environment, it will then also install development dependencies needed for testing and running your application.
@@ -217,22 +210,6 @@ $ docker build -t mean -f Dockerfile-production .
 $ docker run -p 27017:27017 -d --name db mongo
 $ docker run -p 3000:3000 --link db:db_1 mean
 ```
-
-## Deploying to PAAS
-
-###  Deploying MEANJS To Heroku
-
-By clicking the button below you can signup for Heroku and deploy a working copy of MEANJS to the cloud without having to do the steps above.
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-### Amazon S3 configuration
-
-To save the profile images to S3, simply set those environment variables:
-UPLOADS_STORAGE: s3
-S3_BUCKET: the name of the bucket where the images will be saved
-S3_ACCESS_KEY_ID: Your S3 access key
-S3_SECRET_ACCESS_KEY: Your S3 access key password
 
 ## Getting Started With MEAN.JS
 You have your application running, but there is a lot of stuff to understand. We recommend you go over the [Official Documentation](http://meanjs.org/docs.html).

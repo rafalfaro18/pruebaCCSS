@@ -118,7 +118,7 @@ module.exports.initSession = function (app, db) {
     },
     name: config.sessionKey,
     store: new MongoStore({
-      db: db,
+      mongooseConnection: db.connection,
       collection: config.sessionCollection
     })
   }));
@@ -130,19 +130,18 @@ module.exports.initSession = function (app, db) {
 /**
  * Invoke modules server configuration
  */
-module.exports.initModulesConfiguration = function (app) {
+module.exports.initModulesConfiguration = function (app, db) {
   config.files.server.configs.forEach(function (configPath) {
-    require(path.resolve(configPath))(app);
+    require(path.resolve(configPath))(app, db);
   });
 };
 
 /**
- * Configure Helmet headers configuration for security
+ * Configure Helmet headers configuration
  */
 module.exports.initHelmetHeaders = function (app) {
-  // six months expiration period specified in seconds
-  var SIX_MONTHS = 15778476;
-
+  // Use helmet to secure Express headers
+  var SIX_MONTHS = 15778476000;
   app.use(helmet.frameguard());
   app.use(helmet.xssFilter());
   app.use(helmet.noSniff());

@@ -11,14 +11,14 @@
     var vm = this;
 
     vm.user = Authentication.user;
-    vm.progress = 0;
+    vm.fileSelected = false;
 
-    vm.upload = function (dataUrl) {
+    vm.upload = function (dataUrl, name) {
 
       Upload.upload({
         url: '/api/users/picture',
         data: {
-          newProfilePicture: dataUrl
+          newProfilePicture: Upload.dataUrltoBlob(dataUrl, name)
         }
       }).then(function (response) {
         $timeout(function () {
@@ -34,7 +34,7 @@
     // Called after the user has successfully uploaded a new picture
     function onSuccessItem(response) {
       // Show success message
-      Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Successfully changed profile picture' });
+      Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Change profile picture successful!' });
 
       // Populate user object
       vm.user = Authentication.user = response;
@@ -44,13 +44,12 @@
       vm.progress = 0;
     }
 
-    // Called after the user has failed to upload a new picture
+    // Called after the user has failed to uploaded a new picture
     function onErrorItem(response) {
       vm.fileSelected = false;
-      vm.progress = 0;
 
       // Show error message
-      Notification.error({ message: response.message, title: '<i class="glyphicon glyphicon-remove"></i> Failed to change profile picture' });
+      Notification.error({ message: response.message, title: '<i class="glyphicon glyphicon-remove"></i> Change profile picture failed!' });
     }
   }
 }());

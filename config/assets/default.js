@@ -9,6 +9,7 @@ module.exports = {
         // bower:css
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+        'public/lib/ng-img-crop/compile/unminified/ng-img-crop.css',
         'public/lib/angular-ui-notification/dist/angular-ui-notification.css'
         // endbower
       ],
@@ -18,6 +19,7 @@ module.exports = {
         'public/lib/angular-animate/angular-animate.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'public/lib/ng-file-upload/ng-file-upload.js',
+        'public/lib/ng-img-crop/compile/unminified/ng-img-crop.js',
         'public/lib/angular-messages/angular-messages.js',
         'public/lib/angular-mocks/angular-mocks.js',
         'public/lib/angular-resource/angular-resource.js',
@@ -29,7 +31,7 @@ module.exports = {
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },
     css: [
-      'modules/*/client/{css,less,scss}/*.css'
+      'modules/*/client/css/*.css'
     ],
     less: [
       'modules/*/client/less/*.less'
