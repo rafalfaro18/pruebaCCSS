@@ -232,5 +232,4 @@ The MEAN name was coined by [Valeri Karpov](http://blog.mongodb.org/post/4926286
 [The MIT License](LICENSE.md)
 
 ### Notes
-
 - To create articles user most have admin role
